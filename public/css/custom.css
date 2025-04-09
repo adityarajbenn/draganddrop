@@ -1,0 +1,138 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+h1{
+  margin: 0;
+  padding: 0;
+}
+
+.section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rem 1.5rem;
+}
+
+.section .container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  padding: 16px;
+}
+
+
+.section .column{
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  min-height: 250px;
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  margin: 0 0.5rem;
+}
+
+.section .column:first-child{
+  margin-left: 0;
+}
+
+.section .column:last-child{
+  margin-right: 0;
+}
+
+.column .col-head{
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.column h2{
+  margin-bottom: 0;
+}
+
+.column .col-head a{
+  margin-left: auto;
+  font-size: 13px;
+  color: rgb(0, 106, 255);
+  text-decoration: none;
+}
+
+.column .task-list{
+  width: 100%;
+  min-height: 250px;
+}
+
+.column .task-list.active{
+  background-color: rgb(63, 197, 254);
+}
+
+.column .task-list .task-item{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid rgba(0, 0, 0, 0.13);
+  margin-bottom: 0.55rem;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.task-item p{
+  margin: 0;
+  padding: 0;
+}
+
+.task-item .handle{
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  background-color: aqua;
+  border-radius: 4px;
+  margin-right: 0.4rem;
+}
+
+.column.col-2 .task-item .handle{
+  background-color: rgb(254, 209, 43);
+}
+.column.col-3 .task-item .handle{
+  background-color: rgb(103, 254, 43);
+}
+
+
+.column {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    min-width: 300px;
+    max-width: 320px;
+    margin-right: 16px;
+}
+
+.task-list {
+  max-height: 400px; /* or any height you want */
+  overflow-y: auto;
+  padding: 8px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  scrollbar-width: thin; /* Firefox */
+}
+
+.task-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+

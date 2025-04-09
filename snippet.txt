@@ -1,0 +1,82 @@
+const reposition = (data: Array<any>, from: number, to: number) => {
+
+        let temp: Array<any> = []
+        let result: Array<any> = []
+
+        temp = [...data];
+        
+        const item = data.splice(from, 1)[0];
+
+        if(item){
+            result = [...data];
+            result.splice(to, 0, item);
+        }else{
+            result = [...temp]
+        }
+
+        return result;
+
+    }
+
+    const handleDragEnd = (result: any) =>{
+
+        // result = {
+        //     draggableId: 'task-1',
+        //     type: 'TYPE',
+        //     reason: 'DROP',
+        //     source: {
+        //         droppableId: 'col-1',
+        //         index: 0
+        //     },
+        //     destination: {
+        //         droppableId: 'col-1',
+        //         index: 0
+        //     }
+        // }
+
+        const { source, destination, draggableId, type } = result;
+
+        // check for null destination
+        if(!destination){
+            return;
+        }
+
+        if(destination.droppableId === source.droppableId && destination.index === source.index){
+            return;
+        }
+
+        console.log('source', source);
+        console.log('dest', destination);
+
+
+        let currList: ISeedData = taskContext.seed;
+
+        // start column {source}
+        const start = currList.columns.find((x) => x.id === source.droppableId);
+        const sIndex = currList.columns.findIndex((x) => x.id === source.droppableId);
+
+        // end column {destination}
+        const end = currList.columns.find((x) => x.id === destination.droppableId);
+        const eIndex = currList.columns.findIndex((x) => x.id === destination.droppableId);
+
+        if(start && sIndex >= 0  && end && eIndex >= 0){
+
+            const item = start.tasks.find((x) => x.id === draggableId)
+
+            if(start.id === end.id && item){
+
+                let startTasks = start.tasks;
+                const result = reposition(startTasks, source.index, destination.index);
+
+                start.tasks = result;
+
+                currList.columns.splice(sIndex, 1, start);
+                taskContext.setSeed(currList);
+                
+
+            }
+
+        }
+        
+
+    }
